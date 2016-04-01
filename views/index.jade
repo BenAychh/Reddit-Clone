@@ -1,0 +1,25 @@
+extends layout
+block content
+  article(ng-controller='thePosts')
+    section.container(ng-repeat='post in posts')
+      img.col-sm-3(ng-src='{{post.imageUrl}}')
+      .container.col-sm-9
+        p
+          span.location {{post.location}} |&nbsp;
+          span(class='rating', ng-class='{positive: post.rating > 0, negative: post.rating < 0}') {{post.rating}}
+          span.glyphicon.glyphicon-arrow-up
+          span.glyphicon.glyphicon-arrow-down
+        p.author
+          {{post.author}}
+        p.description
+          {{post.description}}
+        p
+          span.glyphicon.glyphicon-calendar
+          span {{post.date}} |&nbsp;
+          span.glyphicon.glyphicon-comments
+          ng-pluralize(count='post.comments.length', when="{\
+          '1': '1 Comment | ',\
+          'other': '{{post.comments.length}} Comments | '  \
+          }", offset='')
+          span.glyphicon.glyphicon-pencil
+          span Add Comment

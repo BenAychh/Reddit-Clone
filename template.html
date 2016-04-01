@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Reddit Clone</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/master.css">
+  </head>
+  <body ng-app="clone">
+    <article ng-controller="thePosts">
+      <section class="post" ng-repeat="for post in posts">
+        <img ng-src="post.imageUrl" class="col-sm-3">
+        <div class="container col-sm-9">
+          <p>
+            <span class="location">{{post.location}}</span> |
+            <span class="glyphicons glyphicons-arrow-up"></span>
+            <span class="glyphicons glyphicons-arrow-down"></span>
+            <span ng-class="{positive: post.rating > 1, negative: post.rating < 1}">{{post.rating}}</span>
+          </p>
+          <p class="author">
+            {{post.author}}
+          </p>
+          <p class="description">
+            {{post.description}}
+          </p>
+          <p>
+            <span class="glyphicons glyphicons-calendar"></span>
+            <span>{{post.date}}</span> |
+            <span class="glyphicons glyphicons-comments"></span>
+            <ng-pluralize count="post.comments.length" when="{
+              '1': '1 Comment',
+              'other': '{{post.comments.length}} Comments'
+
+            }"  offset=""></ng-pluralize> |
+            <span class="glyphicons glyphicons-pencil"></span> Add Comment
+          </p>
+        </div>
+      </section>
+    </article>
+    <script type="text/javascript" src="/javascripts/angular.min.js"></script>
+  </body>
+</html>

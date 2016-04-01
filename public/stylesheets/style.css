@@ -1,0 +1,17 @@
+body {
+  padding: 50px;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.rating {
+  font-weight: bold;
+}
+.positive {
+  color: rgb(0, 133, 5);
+}
+.negative {
+  color: rgb(200, 0, 0);
+}
