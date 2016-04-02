@@ -2,6 +2,7 @@ var app = angular.module('clone', ['yaru22.angular-timeago']);
 app.factory('postFactory', function() {
   var posts = [
     {
+      id: 1,
       author: 'Ben Hernandez',
       imageUrl: 'http://apod.nasa.gov/apod/image/1512/20151221LulworthCove-reKotsiopoulos.jpg',
       location: 'Otherworld, Milky Way',
@@ -15,6 +16,7 @@ app.factory('postFactory', function() {
       date: '2016-03-31 15:35:16',
     },
     {
+      id: 2,
       author: 'Chubby',
       imageUrl: 'http://i.dailymail.co.uk/i/pix/2015/09/28/08/2CD1E26200000578-0-image-a-312_1443424459664.jpg',
       location: 'Yellowstone National Park',
@@ -26,6 +28,7 @@ app.factory('postFactory', function() {
       date: '2016-02-25 07:30:11',
     },
     {
+      id: 3,
       author: 'AlphaKaiForever',
       imageUrl: 'http://www.sbs.com.au/news/sites/sbs.com.au.news/files/1-01-2016_2-21-55_pm_0.jpg',
       location: 'New York, NY',
@@ -54,30 +57,55 @@ app.factory('postFactory', function() {
       date: new Date(),
     })
   }
-  postClass.upVote = function(postNumber) {
-    posts[postNumber].rating++;
-
+  postClass.upVote = function(id) {
+    for (i = 0; i < posts.length; i++) {
+      if (posts[i].id == id) {
+        posts[i].rating++;
+        break;
+      }
+    }
   }
-  postClass.downVote = function(postNumber) {
-    posts[postNumber].rating--;
+  postClass.downVote = function(id) {
+    for (i = 0; i < posts.length; i++) {
+      if (posts[i].id == id) {
+        posts[i].rating--;
+        break;
+      }
+    }
   }
-  postClass.addComment = function(postNumber, name, comment) {
-    posts[postNumber].comments.push({name: name, comment: comment});
+  postClass.addComment = function(id, name, comment) {
+    for (i = 0; i < posts.length; i++) {
+      if (posts[i].id == id) {
+        posts[i].comments.push({name: name, comment: comment});
+        break;
+      }
+    }
   }
-  postClass.get = function(postNumber) {
-    if (postNumber) {
-      return posts[postNumber];
+  postClass.get = function(id) {
+    if (id) {
+      for (i = 0; i < posts.length; i++) {
+        if (posts[i].id == id) {
+          return posts[i];
+        }
+      }
     }
     return posts;
   }
-  postClass.toggleComments = function(index) {
-    console.log('heyyyyy');
-    posts[index].showComments = !posts[index].showComments;
-    posts[index].showAddComment = false;
+  postClass.toggleComments = function(id) {
+    for (i = 0; i < posts.length; i++) {
+      if (posts[i].id == id) {
+        posts[i].showComments = !posts[i].showComments;
+        posts[i].showAddComment = false;
+      }
+    }
   }
-  postClass.toggleAddComment = function(index) {
-    posts[index].showAddComment = !posts[index].showAddComment;
-    posts[index].showComments = false;
+  postClass.toggleAddComment = function(id) {
+    for (i = 0; i < posts.length; i++) {
+      if (posts[i].id == id) {
+        posts[i].showAddComment = !posts[i].showAddComment;
+        posts[i].showComments = false;
+      }
+    }
   }
   return postClass;
 })
