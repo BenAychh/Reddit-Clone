@@ -7,6 +7,9 @@ nav div {
   font-size: 40px;
   margin: 10px;
 }
+.clickable {
+  cursor: pointer;
+}
 .searcher {
   width: 100px;
   border: 0;

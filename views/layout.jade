@@ -8,7 +8,7 @@ html
   body(ng-app='clone' ng-controller="thePosts")
     nav
       .brand Fake Reddit |
-      .smaller-nav-div
+      .smaller-nav-div.clickable(ng-click='showAddPost = !showAddPost')
         span.glyphicon-plus.glyphicon
         span Add Post &nbsp;&nbsp;|
       .smaller-nav-div
@@ -23,8 +23,23 @@ html
       .smaller-nav-div(ng-click="flipSort()")
           span.glyphicon.glyphicon-sort-by-alphabet(ng-show="!reverseSort")
           span.glyphicon.glyphicon-sort-by-alphabet-alt(ng-show="reverseSort")
-    form
-      .form-control
+    .container
+      form(ng-show='showAddPost')
+        .col-sm-6
+          .form-group
+            label(for='name') Name
+            input.form-control(name='name' type='text' placeholder='name')
+          .form-group
+            label(for='location') Location
+            input.form-control(name='location' type='text' placeholder='location')
+          .form-group
+            label(for='description') Desciption
+            textarea.form-control(name='description' type='text' placeholder='description' rows='5')
+          input.form-control(type='submit')
+        .form-group.col-sm-6
+          label(for='image') Image
+          input.form-control(name='location' type='file' placeholder='location' onchange="angular.element(this).scope().fileChanged(this)" accept="image/*")
+          img.img-responsive(ng-src="{{prevImg}}")
     block content
     script(type='text/javascript', src='/javascripts/angular.min.js')
     script(type='text/javascript', src='/javascripts/timeAgo.js')

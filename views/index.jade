@@ -33,6 +33,6 @@ block content
               input.form-control(type='text', placeholder='Your Name', name='commenterName', ng-model='commenterName', ng-minlength='3', required)
               p.help-block(ng-show='addCommentForm.commenterName.$invalid && !addCommentForm.commenterName.$pristine') Name must be at least 3 characters.
             .form-group(ng-class="{'has-error': addCommentForm.newComment.$invalid && !addCommentForm.newComment.$pristine}")
-              textarea(cols='40', rows='5', name="newComment", ng-model='newComment', placeholder='Your comment here', ng-minlength='10')
+              textarea.form-control(cols='40', rows='5', name="newComment", ng-model='newComment', placeholder='Your comment here', ng-minlength='10')
               p.help-block(ng-show='addCommentForm.newComment.$invalid && !addCommentForm.newComment.$pristine') Comment must be at least 10 characters.
             input(type='submit', ng-disabled='addCommentForm.$invalid', value='Add Comment')
