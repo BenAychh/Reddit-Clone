@@ -1,4 +1,4 @@
-var app = angular.module('clone', []);
+var app = angular.module('clone', ['yaru22.angular-timeago']);
 app.factory('postFactory', function() {
   var posts = [
     {
@@ -39,6 +39,10 @@ app.factory('postFactory', function() {
       date: '2016-03-31 15:35:16',
     },
   ]
+  for (i = 0; i < posts.count; i++) {
+    posts[i].showComments = false;
+    posts[i].showAddComment = false;
+  }
   var postClass = {};
   postClass.addPost = function(author, imageUrl, location, description) {
     posts.push({
@@ -52,6 +56,7 @@ app.factory('postFactory', function() {
   }
   postClass.upVote = function(postNumber) {
     posts[postNumber].rating++;
+
   }
   postClass.downVote = function(postNumber) {
     posts[postNumber].rating--;
@@ -65,8 +70,22 @@ app.factory('postFactory', function() {
     }
     return posts;
   }
+  postClass.toggleComments = function(index) {
+    console.log('heyyyyy');
+    posts[index].showComments = !posts[index].showComments;
+    posts[index].showAddComment = false;
+  }
+  postClass.toggleAddComment = function(index) {
+    posts[index].showAddComment = !posts[index].showAddComment;
+    posts[index].showComments = false;
+  }
   return postClass;
 })
 app.controller('thePosts', function($scope, postFactory) {
-  $scope.posts = postFactory.get();
-})
+  $scope.postClass = postFactory;
+  $scope.posts = $scope.postClass.get();
+  $scope.reverseSort = false;
+  $scope.flipSort = function() {
+    $scope.reverseSort = !$scope.reverseSort;
+  }
+});
