@@ -5,7 +5,25 @@ html
     title Reddit Clone
     link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body(ng-app='clone')
+  body(ng-app='clone' ng-controller="thePosts")
+    nav
+      div.brand Fake Reddit |
+      div.smaller-nav-div
+        span.glyphicon-plus.glyphicon
+        span Add Post |
+      div.smaller-nav-div
+        input.searcher(type="text", placeholder="search", ng-model="searcher")
+        span  |
+      div.smaller-nav-div
+        span Sort By:
+        select(ng-model="sorter", ng-init="sorter='rating'")
+          option(value="rating") Rating
+          option(value="location") Location
+          option(value="date") Date
+        div.smaller-nav-div(ng-click="flipSort()")
+          span.glyphicon.glyphicon-sort-by-alphabet(ng-show="!reverseSort")
+          span.glyphicon.glyphicon-sort-by-alphabet-alt(ng-show="reverseSort")
     block content
     script(type='text/javascript', src='/javascripts/angular.min.js')
+    script(type='text/javascript', src='/javascripts/timeAgo.js')
     script(type='text/javascript', src='/javascripts/master.js')
