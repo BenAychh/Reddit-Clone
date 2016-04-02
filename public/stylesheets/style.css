@@ -31,6 +31,11 @@ nav div {
 nav .smaller-nav-div select {
   background-color: rgb(233, 233, 233);
 }
+.glyphicon-sort-by-alphabet, .glyphicon-sort-by-alphabet-alt{
+  position: relative;
+  top: 5px;
+  font-size: 1.2em;
+}
 section {
   border: 1px solid rgb(134, 134, 134);
   padding: 10px;
@@ -95,11 +100,6 @@ input[type="submit"]:disabled {
     top: 10px;
     font-size: 20px;
   }
-  .glyphicon-sort-by-alphabet, .glyphicon-sort-by-alphabet-alt{
-    position: relative;
-    top: -5px;
-    font-size: 1.5em;
-  }
 }
 @media (min-width: 769px) {
   nav {
@@ -118,10 +118,5 @@ input[type="submit"]:disabled {
     font-size: 20px;
     top: -5px;
     position: relative;
-  }
-  .glyphicon-sort-by-alphabet, .glyphicon-sort-by-alphabet-alt{
-    position: relative;
-    top: 10px;
-    font-size: 1.2em;
   }
 }

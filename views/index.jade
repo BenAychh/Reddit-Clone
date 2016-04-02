@@ -23,16 +23,16 @@ block content
           }", offset='', ng-click='postClass.toggleComments(post.id)')
           span.glyphicon.glyphicon-pencil
           span.comments(ng-click='postClass.toggleAddComment(post.id)') Add Comment
-        div.comments(ng-show='post.showComments' class='existingComments')
+        .comments(ng-show='post.showComments' class='existingComments')
           div(ng-repeat="comment in post.comments")
             p.name {{comment.name}}
             p.commentText {{comment.comment}}
-        div.comments.newComment(ng-show='post.showAddComment')
+        .comments.newComment(ng-show='post.showAddComment')
           form(name='addCommentForm', novalidate, ng-submit='postClass.addComment(post.id, commenterName, newComment)')
-            div.form-group(ng-class="{'has-error': addCommentForm.commenterName.$invalid && !addCommentForm.commenterName.$pristine}")
+            .form-group(ng-class="{'has-error': addCommentForm.commenterName.$invalid && !addCommentForm.commenterName.$pristine}")
               input.form-control(type='text', placeholder='Your Name', name='commenterName', ng-model='commenterName', ng-minlength='3', required)
               p.help-block(ng-show='addCommentForm.commenterName.$invalid && !addCommentForm.commenterName.$pristine') Name must be at least 3 characters.
-            div.form-group(ng-class="{'has-error': addCommentForm.newComment.$invalid && !addCommentForm.newComment.$pristine}")
+            .form-group(ng-class="{'has-error': addCommentForm.newComment.$invalid && !addCommentForm.newComment.$pristine}")
               textarea(cols='40', rows='5', name="newComment", ng-model='newComment', placeholder='Your comment here', ng-minlength='10')
               p.help-block(ng-show='addCommentForm.newComment.$invalid && !addCommentForm.newComment.$pristine') Comment must be at least 10 characters.
             input(type='submit', ng-disabled='addCommentForm.$invalid', value='Add Comment')
