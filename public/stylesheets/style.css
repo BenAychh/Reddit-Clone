@@ -2,9 +2,40 @@ body {
   padding: 50px;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+nav div {
+  display: inline;
+  font-size: 40px;
+  margin: 10px;
+}
+.searcher {
+  width: 100px;
+  border: 0;
+  text-align: center;
+  background: rgb(233, 233, 233);
+}
+.searcher::-webkit-input-placeholder {
+   text-align: center;
+}
 
-a {
-  color: #00B7FF;
+.searcher:-moz-placeholder { /* Firefox 18- */
+   text-align: center;
+}
+
+.searcher::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;
+}
+
+.searcher:-ms-input-placeholder {
+   text-align: center;
+}
+nav .smaller-nav-div select {
+  background-color: rgb(233, 233, 233);
+}
+section {
+  border: 1px solid rgb(134, 134, 134);
+  padding: 10px;
+  background-color: rgb(221, 221, 221);
+  margin: 10px;
 }
 .rating {
   font-weight: bold;
@@ -14,4 +45,83 @@ a {
 }
 .negative {
   color: rgb(200, 0, 0);
+}
+.existingComments {
+  margin-left: 10px;
+}
+.name {
+  font-weight: bolder;
+}
+.commentText {
+  padding-left: 10px;
+}
+span.glyphicon-arrow-up, span.glyphicon-arrow-down{
+    font-size: 1.5em;
+}
+.comments {
+  cursor: pointer;
+}
+.newComment input {
+  display: block;
+  border: 2px solid black;
+}
+.newComment textarea {
+  display: block;
+  border: solid 2px black;
+}
+input[type="submit"]:disabled {
+  cursor: not-allowed;
+}
+@media (max-width: 768px) {
+  nav {
+    height: 50px;
+    background: rgb(200, 200, 200);
+    padding-top: 0;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  nav div {
+    display: inline;
+    font-size: 30px;
+    margin: 10px;
+  }
+  nav .smaller-nav-div {
+    font-size: 15px;
+    top: 10px;
+    position: relative;
+  }
+  .brand {
+    position: relative;
+    top: 10px;
+    font-size: 20px;
+  }
+  .glyphicon-sort-by-alphabet, .glyphicon-sort-by-alphabet-alt{
+    position: relative;
+    top: -5px;
+    font-size: 1.5em;
+  }
+}
+@media (min-width: 769px) {
+  nav {
+    height: 50px;
+    background: rgb(200, 200, 200);
+    padding-top: 0;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  nav div {
+    display: inline;
+    font-size: 40px;
+    margin: 10px;
+  }
+  nav .smaller-nav-div {
+    font-size: 20px;
+    top: -5px;
+    position: relative;
+  }
+  .glyphicon-sort-by-alphabet, .glyphicon-sort-by-alphabet-alt{
+    position: relative;
+    top: 10px;
+    font-size: 1.2em;
+  }
 }
