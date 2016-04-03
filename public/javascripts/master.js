@@ -48,10 +48,13 @@ app.factory('postFactory', function() {
   }
   var postClass = {};
   postClass.addPost = function(author, imageUrl, location, description) {
+    console.log(imageUrl);
     posts.push({
+      id: posts.length + 1,
       author: author,
       imageUrl: imageUrl,
-      loation: location,
+      location: location,
+      description: description,
       rating: 0,
       comments: [],
       date: new Date(),
@@ -127,4 +130,7 @@ app.controller('thePosts', function($scope, postFactory) {
     };
     reader.readAsDataURL(photofile);
   };
+  $scope.clearForm = function(blah) {
+    console.log(blah);
+  }
 });

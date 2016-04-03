@@ -1,5 +1,25 @@
 extends layout
 block content
+  .container
+    form(ng-show='showAddPost' novalidate ng-model="addPostForm" name="addPostForm" ng-submit='postClass.addPost(name, prevImg, location, description); cleanForm(addPostForm);  this.setPristine();')
+      .col-sm-6
+        .form-group(ng-class="{'has-error': addPostForm.name.$invalid && !addPostForm.name.$pristine}")
+          label(for='name') Name
+          input.form-control(name='name' required ng-model="name" type='text' placeholder='name' ng-minlength='3')
+          p.help-block(ng-show='addPostForm.name.$invalid && !addPostForm.name.$pristine') Name must be at least 3 characters.
+        .form-group(ng-class="{'has-error': addPostForm.location.$invalid && !addPostForm.location.$pristine}")
+          label(for='location') Location
+          input.form-control(name='location' required ng-model="location" type='text' placeholder='location' ng-minlength='5')
+          p.help-block(ng-show='addPostForm.location.$invalid && !addPostForm.location.$pristine') Location must be at least 5 characters.
+        .form-group(ng-class="{'has-error': addPostForm.description.$invalid && !addPostForm.description.$pristine}")
+          label(for='description') Desciption
+          textarea.form-control(name='description' required ng-model="description" type='text' placeholder='description' rows='5' ng-minlength='20')
+          p.help-block(ng-show='addPostForm.description.$invalid && !addPostForm.description.$pristine') Description must be at least 20 characters.
+        input.form-control(type='submit' ng-disabled='addPostForm.$invalid')
+      .form-group.col-sm-6
+        label(for='image') Image
+        input.form-control(name='image' required type='file' onchange="angular.element(this).scope().fileChanged(this)" accept="image/*")
+        img.img-responsive(ng-src="{{prevImg}}")
   article
     section.container(ng-repeat='post in posts | filter:searcher | orderBy:sorter:reverseSort')
       img.img-responsive.col-sm-3(ng-src='{{post.imageUrl}}')
