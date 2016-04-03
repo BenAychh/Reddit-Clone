@@ -80,6 +80,18 @@ span.glyphicon-arrow-up, span.glyphicon-arrow-down{
 input[type="submit"]:disabled {
   cursor: not-allowed;
 }
+.ng-enter {
+  animation: zoomInUp .5s;
+}
+
+.ng-leave {
+  animation: zoomOutDown .5s;
+}
+
+.ng-enter-stagger, .ng-leave-stagger {
+  transition-delay: 0.1s;
+  transition-duration:0;
+}
 @media (max-width: 768px) {
   nav {
     height: 50px;

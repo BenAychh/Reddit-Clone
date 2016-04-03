@@ -1,4 +1,4 @@
-var app = angular.module('clone', ['yaru22.angular-timeago']);
+var app = angular.module('clone', ['yaru22.angular-timeago', 'ngAnimate']);
 app.factory('postFactory', function() {
   var posts = [
     {
